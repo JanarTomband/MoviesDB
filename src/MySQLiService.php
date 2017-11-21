@@ -29,7 +29,24 @@ class MySQLiService implements IServiceDB //those funktions work only with MySQL
 		}
 		return $films; 
 	}
-	
+
+	public function getAllCategories()
+	{
+		$categories=array();
+		if ($this->connect()) {
+			if ($result = mysqli_query($this->connectDB, 'SELECT * FROM category')) {
+				while ($row = mysqli_fetch_assoc($result)) {
+						$categories[]=new Category($row['category_id'], $row['name']);
+				} 
+				mysqli_free_result($result);
+			}
+			mysqli_close($this->connectDB);	
+		}
+		return $categories; 
+	}
+
+
+
 	public function getFilmByID($id) //Gets all the movies by their IDs
 	{	
 		$film=null; 
@@ -40,7 +57,7 @@ class MySQLiService implements IServiceDB //those funktions work only with MySQL
 				$result = $query->get_result(); //gets result of our search by id
 				$numRows = $result->num_rows; //counts the number of rows
 				if ($numRows==1) { //runs if number of rows equals 1
-					$row=$result->fetch_array(MYSQLI_NUM); //sets how we will get our result in thsi case as an array
+					$row=$result->fetch_array(MYSQLI_NUM); //sets how we will get our result in this case as an array
 					$film=new Film($row[0], $row[1], $row[2], $row[3], $row[5]); //creates array using only the parts that are shown by numbers
 				}
 				$query->close(); //closes the query

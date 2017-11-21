@@ -32,6 +32,35 @@ class PDOService implements IServiceDB //those functions work with all types of 
 		return $films;
 	}
 
+	public function getAllCategories()
+	{
+		$categories=array();
+		if ($this->connect()) {
+			if ($result = $this->connectDB->query('SELECT * FROM category')) {
+				$rows = $result->fetchAll(PDO::FETCH_ASSOC);
+				foreach($rows as $row){
+						$categories[]=new Category($row['category_id'], $row['name']);
+				} 
+			}
+		}
+		$this->connectDB=null;
+		return $categories; 
+	}
+
+	public function getAllActors()
+	{
+		$actors=array();
+		if ($this->connect()) {
+			if ($result = $this->connectDB->query('SELECT * FROM actor ORDER BY lastname ASC')) {
+				$rows = $result->fetchAll(PDO::FETCH_ASSOC);
+				foreach($rows as $row){
+						$actors[]=new Actor($row['actor_id'], $row['firstname'], $row['lastname']);
+				} 
+			}
+		}
+		$this->connectDB=null;
+		return $actors; 
+	}
 	
 	public function getFilmByID($id)//Gets all the movies by their IDs
 	{	
