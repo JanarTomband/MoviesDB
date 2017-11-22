@@ -32,6 +32,13 @@ class PDOService implements IServiceDB //those functions work with all types of 
 		return $films;
 	}
 
+	public function getAllFilms2()
+{
+
+
+	
+}
+
 	public function getAllCategories()
 	{
 		$categories=array();

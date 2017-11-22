@@ -3,6 +3,7 @@
 interface IServiceDB
 {
     public function connect();
+    public function getAllFilms2();
     public function getAllFilms();
     public function getAllActors();
     public function getAllCategories();

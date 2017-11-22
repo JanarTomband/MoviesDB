@@ -16,7 +16,7 @@ require_once "autoloader.php"; //connectautoloader.php file here
  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 			
-            <div class="container" style=" padding-top: 50px">
+            <div class="container" style=" padding-top: 50px; padding-bottom: 100px">
 			
             <div class="row">
 			<div class="col-md-4">
@@ -35,7 +35,7 @@ require_once "autoloader.php"; //connectautoloader.php file here
 					</div>
             
             <div class="col-8">
-            <div class="jumbotron w-300 p-3" style=" background-color: rgba(0,0,0,.55);color: #999; padding-left: 300px; word-wrap: break-word;">
+            <div class="jumbotron w-300 p-3 text-center" style=" background-color: rgba(0,0,0,.55);color: #999; padding-left: 300px; word-wrap: break-word;">
 
            
             
@@ -45,8 +45,8 @@ require_once "autoloader.php"; //connectautoloader.php file here
                 
                
                  foreach($db->getAllActors() as $actors) { ?>
-                <div class="dropdown">
-                <button class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" button:focus="outline:0" aria-expanded="false " style=" background-color:#154360 ;color: #D4E6F1;padding-left: 15px; padding-right: 15px"> <?php
+                <div class="dropdown" style="padding-top: 10px;">
+                <button class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" button:focus="outline:0" aria-expanded="false " style=" min-width: 250px; max-width: 250px; background-color:#154360 ;color: #D4E6F1;padding-left: 15px; padding-right: 15px"> <?php
                  echo $growingId++.". ".$actors->firstname."   ".$actors->lastname ?> </button> <?php "<br/>";
                }
             ?>
@@ -55,15 +55,15 @@ require_once "autoloader.php"; //connectautoloader.php file here
             <a class="dropdown-item" href="#">
             <?php
             $db=new PDOService(); 
-            foreach($db->getAllCategories() as $categories) {
-                echo $categories->id.". ". $categories->name."<br/>";
+            foreach($db->getAllFilms() as $film) {
+                echo $film->id.". ". $film->title."<br/>";
                 }
             ?></a>
                 </div>
               </div>
 						</div>
 
-					<footer style="padding-top: 200px"><div class="fixed-bottom p-2 text-white text-center color " style="background-color:#154360">Janar Tomband <?php echo date("Y"); ?></div></footer>
+					<footer style="padding-top: 200px"><div class="fixed-bottom p-2 text-white text-center color " style=" background-color:#154360">Janar Tomband <?php echo date("Y"); ?></div></footer>
 					<div class="col">
 	
 					</div>

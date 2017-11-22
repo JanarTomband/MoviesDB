@@ -11,7 +11,7 @@ require_once "autoloader.php"; //connectautoloader.php file here
     </head>
 	<body style="background-color: #333;">
 	
-			<div class="container" style=" padding-top: 50px">
+			<div class="container" style=" padding-top: 50px; padding-bottom: 100px">
 			<div class="row">
 			<div class="col-md-4">
 						<div class="jumbotron w-300 p-3 text-center" style=" background-color: rgba(0,0,0,.55);color: #999; padding-left: 20px; word-wrap: break-word;">
