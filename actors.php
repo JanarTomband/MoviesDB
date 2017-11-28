@@ -55,8 +55,8 @@ require_once "autoloader.php"; //connectautoloader.php file here
             <a class="dropdown-item" href="#">
             <?php
             $db=new PDOService(); 
-            foreach($db->getAllFilms() as $film) {
-                echo $film->id.". ". $film->title."<br/>";
+            foreach($db->getFilmsByActor() as $film) {
+               echo $film->id.". ". $film->title."<br/>";
                 }
             ?></a>
                 </div>

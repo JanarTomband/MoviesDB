@@ -51,9 +51,9 @@ require_once "autoloader.php"; //connectautoloader.php file here
             <a class="dropdown-item" href="#">
             <?php
             $db=new PDOService(); 
-            foreach($db->getAllFilms2() as $fil) {
-                echo $fil->id.". ". $fil->title."<br/>";
-                }
+            //foreach($db->getAllFilms2() as $fil) {
+            //    echo $fil->id.". ". $fil->title."<br/>";
+            //    }
             ?></a>
                 </div>
               </div>
