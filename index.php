@@ -11,15 +11,15 @@ require_once "autoloader.php"; //connectautoloader.php file here
     </head>
 	<body style="background-color: #333;">
 	
-			<div class="container" style=" padding-top: 50px; padding-bottom: 100px">
+			<div class="container" style=" padding-top: 50px; padding-bottom: 100px; display:block;" >
 			<div class="row">
 			<div class="col-md-4">
 						<div class="jumbotron w-300 p-3 text-center" style=" background-color: rgba(0,0,0,.55);color: #999; padding-left: 20px; word-wrap: break-word;">
 							<h1  style="color: #336E7B">Welcome</h1>
 							<div class="col-md-50 text-center" style=" padding-top: 30px"> 
-									<a class="btn" href="actors.php"  role="button" style="background-color:#154360 ;color: #D4E6F1; padding-left: 30px; padding-right: 30px" />Actors</a>
+									<a class="btn" href="actors.php"  role="button" style="background-color:#154360 ;color: #D4E6F1; padding-left: 30px; padding-right: 30px;" />Actors</a>
 									<div  style=" padding-top: 20px">
-									<a class="btn" href="Categories.php"  role="button" style="background-color:#154360 ;color: #D4E6F1; padding-left: 15px; padding-right: 15px" />Categories</a>
+									<a class="btn" href="Categories.php"  role="button" style="background-color:#154360 ;color: #D4E6F1; padding-left: 15px; padding-right: 15px;" />Categories</a>
 									<div  style=" padding-bottom: 100px">
 								</form>    
 							</div>

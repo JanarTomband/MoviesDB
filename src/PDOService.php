@@ -34,10 +34,25 @@ class PDOService implements IServiceDB //those functions work with all types of 
 
 	public function getFilmsByActor($id)
 {
-	//SELECT f.* FROM `film` AS f JOIN `film_actor` AS fa ON f.film_id=fa.film_id WHERE fa.actor_id=4 
 	$film=array();
 	if ($this->connect()) {
-		if ($result = $this->connectDB->prepare('SELECT f.* FROM `film` AS f JOIN `film_actor` AS fa ON f.film_id=fa.film_id WHERE fa.actor_id=:id')) {
+		if ($result = $this->connectDB->prepare('SELECT film.* FROM `film` JOIN `film_actor` ON film.film_id=film_actor.film_id WHERE film_actor.actor_id=:id')) {
+			$result->execute(array('id'=>$id));
+			$rows = $result->fetchAll(PDO::FETCH_ASSOC);
+			foreach($rows as $row){
+					$film[]=new Film($row['film_id'], $row['title'], $row['description'], $row['release_year'], $row['length']);
+			} 
+		}
+	}
+	$this->connectDB=null;
+	return $film; 
+}
+
+public function getFilmsByCategory($id)
+{
+	$film=array();
+	if ($this->connect()) {
+		if ($result = $this->connectDB->prepare('SELECT film.* FROM `film` JOIN `film_category` ON film.film_id=film_category.film_id WHERE film_category.category_id=:id')) {
 			$result->execute(array('id'=>$id));
 			$rows = $result->fetchAll(PDO::FETCH_ASSOC);
 			foreach($rows as $row){

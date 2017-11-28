@@ -21,7 +21,7 @@ require_once "autoloader.php"; //connectautoloader.php file here
             <div class="row">
 			<div class="col-md-4">
 						<div class="jumbotron w-300 p-3 text-center" style=" background-color: rgba(0,0,0,.55);color: #999; padding-left: 20px; word-wrap: break-word;">
-							<h1  style="color: #336E7B">Welcome</h1>
+							<h1  style="color: #336E7B">Actors</h1>
 							<div class="col-md-50" style=" padding-top: 30px"> 
 									<a class="btn" href="index.php"  role="button" style="background-color:#154360 ;color: #D4E6F1; padding-left: 32px; padding-right: 32px" />Menu</a>
 									<div  style=" padding-top: 20px">
@@ -35,7 +35,7 @@ require_once "autoloader.php"; //connectautoloader.php file here
 					</div>
             
             <div class="col-8">
-            <div class="jumbotron w-300 p-3 text-center" style=" background-color: rgba(0,0,0,.55);color: #999; padding-left: 300px; word-wrap: break-word;">
+            <div class="jumbotron w-300 p-3 text-center" style=" background-color: rgba(0,0,0,.55);color: #999; padding-left: 300px; word-wrap: break-word; display:block;">
 
            
             
@@ -51,15 +51,14 @@ require_once "autoloader.php"; //connectautoloader.php file here
                }
             ?>
             
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" >
+            <a class="dropdown-item" href="#" >
             <?php
-            $db=new PDOService(); 
-            foreach($db->getFilmsByActor() as $film) {
-               echo $film->id.". ". $film->title."<br/>";
+            foreach( $db->getFilmsByActor($actors->id) as $film) {
+               echo $film->title."<br/>";
                 }
             ?></a>
-                </div>
+                </div >
               </div>
 						</div>
 

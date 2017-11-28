@@ -4,6 +4,7 @@ interface IServiceDB
 {
     public function connect();
     public function getFilmsByActor($id);
+    public function getFilmsByCategory($id);
     public function getAllFilms();
     public function getAllActors();
     public function getAllCategories();

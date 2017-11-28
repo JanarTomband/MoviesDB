@@ -20,8 +20,8 @@ require_once "autoloader.php"; //connectautoloader.php file here
 			
             <div class="row">
 			<div class="col-md-4">
-						<div class="jumbotron w-300 p-3 text-center" style=" background-color: rgba(0,0,0,.55);color: #999; padding-left: 20px; word-wrap: break-word;">
-							<h1  style="color: #336E7B">Welcome</h1>
+						<div class="jumbotron w-300 p-3 text-center" style=" background-color: rgba(0,0,0,.55);color: #999; padding-left: 20px; word-wrap: break-word; ">
+							<h1  style="color: #336E7B">Categories</h1>
 							<div class="col-md-50 text-center" style=" padding-top: 30px"> 
 									<a class="btn" href="index.php"  role="button" style="background-color:#154360 ;color: #D4E6F1; padding-left: 32px; padding-right: 32px" />Menu</a>
 									<div  style=" padding-top: 20px">
@@ -36,26 +36,27 @@ require_once "autoloader.php"; //connectautoloader.php file here
             
             <div class="col-8">
             <div class="jumbotron w-300 p-3 text-center" style=" background-color: rgba(0,0,0,.55);color: #999; padding-left: 300px; word-wrap: break-word;">
-          
-			<?php
-                $db=new PDOService(); ?>
-				<?php
-				foreach($db->getAllCategories() as $categories) { ?>
-                <div class="dropdown " style="padding-top: 10px;">
-                <button class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" button:focus="outline:0" aria-expanded="false " style=" min-width: 170px; max-width: 170px; background-color:#154360 ;color: #D4E6F1;padding-left: 15px; padding-right: 15px"> <?php
-                 echo $categories->id.". ". $categories->name ?> </button> <?php "<br/>";
+            
+            <?php
+                $db=new PDOService(); 
+                
+               
+                 foreach($db->getAllCategories() as $categories) { ?>
+                <div class="dropdown" style="padding-top: 10px;">
+                <button class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" button:focus="outline:0" aria-expanded="false " style=" min-width: 250px; max-width: 250px; background-color:#154360 ;color: #D4E6F1;padding-left: 15px; padding-right: 15px"> <?php
+                  echo $categories->id.". ". $categories->name ?> </button> <?php "<br/>";
                }
             ?>
             
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" href="#">
             <?php
-            $db=new PDOService(); 
-            //foreach($db->getAllFilms2() as $fil) {
-            //    echo $fil->id.". ". $fil->title."<br/>";
-            //    }
+            foreach($db->getFilmsByCategory($categories->id) as $film) {
+               echo $film->title."<br/>";
+                }
             ?></a>
                 </div>
+
               </div>
 			  </div>
 						</div>
