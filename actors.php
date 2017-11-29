@@ -46,18 +46,22 @@ require_once "autoloader.php"; //connectautoloader.php file here
                
                  foreach($db->getAllActors() as $actors) { ?>
                 <div class="dropdown" style="padding-top: 10px;">
-                <button class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" button:focus="outline:0" aria-expanded="false " style=" min-width: 250px; max-width: 250px; background-color:#154360 ;color: #D4E6F1;padding-left: 15px; padding-right: 15px"> <?php
-                 echo $growingId++.". ".$actors->firstname."   ".$actors->lastname ?> </button> <?php "<br/>";
+                <a href="<?php echo $_SERVER['PHP_SELF'].'?id='.$actors->id; ?>" class="btn dropdown-toggle"  role="button">Text</a>
+                <a href="<?php echo $_SERVER['PHP_SELF'].'?id='.$actors->id; ?>"  class="btn dropdown-toggle"  role="button" id="dropdownMenuButton<?php echo $growingId;?>" data-toggle="dropdown" aria-haspopup="true" button:focus="outline:0" aria-expanded="false" style=" min-width: 250px; max-width: 250px; background-color:#154360 ;color: #D4E6F1;padding-left: 15px; padding-right: 15px"> <?php
+                 echo $growingId++.". ".$actors->firstname."   ".$actors->lastname ?> </a><?php "<br/>";
                }
             ?>
             
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" >
-            <a class="dropdown-item" href="#" >
+           
             <?php
-            foreach( $db->getFilmsByActor($actors->id) as $film) {
-               echo $film->title."<br/>";
-                }
-            ?></a>
+            if(isset($_REQUEST['id'])){
+                $id=$_REQUEST['id'];
+            foreach( $db->getFilmsByActor($id) as $film) {?>
+                <a class="dropdown-item" href="#" >
+              <?php echo $film->title."</a><br/>";
+                }}
+            ?>
                 </div >
               </div>
 						</div>
