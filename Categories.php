@@ -43,18 +43,27 @@ require_once "autoloader.php"; //connectautoloader.php file here
                
                  foreach($db->getAllCategories() as $categories) { ?>
                 <div class="dropdown" style="padding-top: 10px;">
-                <button class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" button:focus="outline:0" aria-expanded="false " style=" min-width: 250px; max-width: 250px; background-color:#154360 ;color: #D4E6F1;padding-left: 15px; padding-right: 15px"> <?php
-                  echo $categories->id.". ". $categories->name ?> </button> <?php "<br/>";
-               }
-            ?>
+                <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuButton<?php echo $categories->id;?>" data-toggle="dropdown" aria-haspopup="true" button:focus="outline:0" aria-expanded="false " style=" min-width: 250px; max-width: 250px; background-color:#154360 ;color: #D4E6F1;padding-left: 15px; padding-right: 15px"> 
+                <?php
+                  echo $categories->id.". ". $categories->name ?> </a>
+
             
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton<?php echo $categories->id;?>" >
+            <?php 
+            foreach($db->getFilmsByCategory($categories->id) as $film) { ?>
+
+                <a class="dropdown-item" href="#">
             <?php
-            foreach($db->getFilmsByCategory($categories->id) as $film) {
-               echo $film->title."<br/>";
-                }
-            ?></a>
+           
+               echo $film->title."</a>";
+                
+            }
+            echo "</div >";
+            
+            echo "</div >";
+            
+            }
+            ?>
                 </div>
 
               </div>

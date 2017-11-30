@@ -36,33 +36,36 @@ require_once "autoloader.php"; //connectautoloader.php file here
             
             <div class="col-8">
             <div class="jumbotron w-300 p-3 text-center" style=" background-color: rgba(0,0,0,.55);color: #999; padding-left: 300px; word-wrap: break-word; display:block;">
-
-           
             
-                <?php
-                $growingId=1;
-                $db=new PDOService(); 
-                
-               
-                 foreach($db->getAllActors() as $actors) { ?>
-                <div class="dropdown" style="padding-top: 10px;">
-                <a href="<?php echo $_SERVER['PHP_SELF'].'?id='.$actors->id; ?>" class="btn dropdown-toggle"  role="button">Text</a>
-                <a href="<?php echo $_SERVER['PHP_SELF'].'?id='.$actors->id; ?>"  class="btn dropdown-toggle"  role="button" id="dropdownMenuButton<?php echo $growingId;?>" data-toggle="dropdown" aria-haspopup="true" button:focus="outline:0" aria-expanded="false" style=" min-width: 250px; max-width: 250px; background-color:#154360 ;color: #D4E6F1;padding-left: 15px; padding-right: 15px"> <?php
-                 echo $growingId++.". ".$actors->firstname."   ".$actors->lastname ?> </a><?php "<br/>";
-               }
-            ?>
-            
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" >
-           
             <?php
-            if(isset($_REQUEST['id'])){
-                $id=$_REQUEST['id'];
-            foreach( $db->getFilmsByActor($id) as $film) {?>
-                <a class="dropdown-item" href="#" >
-              <?php echo $film->title."</a><br/>";
-                }}
+            $growingId=1;
+            
+            $db=new PDOService();
+            
+            foreach($db->getAllActors() as $actors) {?>
+            <div class="dropdown" style="padding-top: 10px;">
+            <a href="#" class="btn dropdown-toggle" role="button" id="dropdownMenuButton<?php echo $actors->id;?>" data-toggle="dropdown" aria-haspopup="true" button:focus="outline:0" aria-expanded="false" style=" min-width: 250px; max-width: 250px; background-color:#154360 ;color: #D4E6F1;padding-left: 15px; padding-right: 15px"> <?php
+            
+            echo $growingId++.". ".$actors->firstname." ".$actors->lastname ?> </a>
+            
+            
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton<?php echo $actors->id;?>" >
+            <?php foreach($db->getFilmsByActor($actors->id) as $film) {?>
+            <a class="dropdown-item" href="#" >
+            
+            <?php echo $film->title."</a>";
+            
+            }
+            
+            echo "</div >";
+            
+            echo "</div >";
+            
+            }
+            
             ?>
-                </div >
+            
+            </div>
               </div>
 						</div>
 
